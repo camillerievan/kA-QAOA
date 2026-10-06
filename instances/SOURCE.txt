@@ -1,0 +1,21 @@
+random12_published.hyperw
+-------------------------
+
+The 70 twelve-variable hypergraphs behind Sections 4.2 and 4.3 of the
+manuscript.  Taken from graphs_hyper/12nd.hyperw in the main project,
+lines 1 to 48 and 51 to 72, which are the ones the published run
+actually covered; lines 49 and 50 fell on the boundary between two
+batches and were never submitted.  Every one of them has a unique
+ground state, which was the condition for accepting an instance.
+
+Format: one hypergraph per line, as a set of terms
+
+    {(coefficient, v1, v2, v3), (coefficient, v1, v2, v3), ...}
+
+so (-5, 2, 5, 11) is the term -5 * x2 * x5 * x11.  Coefficients are
+non-zero integers in [-10, 10], and instances carry between 7 and 28
+terms.  Variables are numbered 0 to 11, with x0 the rightmost bit of a
+bitstring.
+
+These are read by qaoa.load_hyperw(), which run_magic12.py uses, so a
+run solves the published problems rather than generated ones.

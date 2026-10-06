@@ -1,0 +1,17 @@
+3-uniform path sign-alternating hypergraphs,
+leaving the chain open, so the two vertices at each end
+sit in fewer hyperedges than the rest.
+
+cyclic.csv  1116 rows, one per (graph, depth, variant)
+graphs      12, n in {4, 5, 6, 7, 8, 9, 11, 12, 13, 14}
+depths      1 to 6
+variants    am, ka, ma, sa
+
+The family of each graph is taken from tb_Graph.graph_name,
+and for the unnamed duplicates at n = 4 from the term count.
+
+AR is <C>/C_opt, with c_opt recomputed from the problem
+definition; the database stores the attained expectation but
+no optimum.
+prob_opt_pct is the probability of measuring an optimal
+assignment, as recorded.

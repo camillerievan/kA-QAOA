@@ -1,0 +1,22 @@
+# Pinned environment for the simplified reproduction package.
+#
+#   python -m venv .venv
+#   .venv\Scripts\python.exe -m pip install -r requirements.txt
+#
+# Use `.venv\Scripts\python.exe -m pip`, not a bare `pip`. A bare pip may belong
+# to a different interpreter and will then install wheels built for the wrong
+# Python version, which fails at import with "Importing the numpy C-extensions
+# failed" and a .cp3XX-win_amd64.pyd whose XX does not match the venv.
+#
+# Verified on Python 3.13.13 (Windows 11) with the versions below.
+#
+#   numpy, scipy  the optimisers, the spectrum and the magic measurement
+#   qulacs        the quantum circuits; every experiment runs through these
+#   matplotlib    plot.py only; the experiments do not need it
+#
+# These are the versions this package was verified with. The versions behind
+# the published results are listed in the manuscript.
+numpy==2.5.3
+scipy==1.18.1
+qulacs==0.6.14
+matplotlib==3.11.2

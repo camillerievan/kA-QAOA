@@ -1,0 +1,21 @@
+Exported from Quantum_MaxCut_20250210 on the local SQL Server instance.
+
+QAOA with continuous depth, compared against without, over
+random-coefficient hypergraphs.
+
+qaoacd.csv  3200 rows, one per (graph, depth, setting,
+            initialisation)
+graphs      32, n from 4 to 13
+depths      1 to 5
+series      cd_on 1600 rows, cd_off 1600 rows
+initialisations one_p, random0_to_1_p, random0_to_2pi_p, tqa075, tqa100
+
+This is NOT a comparison of the angle strategies.  The database
+records no angle study and no final angles, so SA, kA, AA and MA
+cannot be told apart or reconstructed from it.  The two series are
+continuous depth on and off.
+
+There is no fidelity here: the measurement probability was not
+recorded.  AR is reported exactly as stored, not recomputed from the
+spectrum, because the problem definitions are not in this
+database; a few values sit marginally above 1.

@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# Editors
+.idea/
+.vscode/
+
+# Database export tooling: not part of the package
+_export_from_db.py
+
+# Scratch runs. The published result sets below are tracked explicitly.
+results/*
+!results/cyclic_published/
+!results/path_published/
+!results/random_published/
+!results/magic_published/
