@@ -129,9 +129,23 @@ the paper. The self-test in `qaoa.py` asserts this.
 differentiated gradients; Powell with `xtol = ftol = 1e-4`. Both capped at
 `maxiter = 500`, which is our choice rather than a SciPy default.
 
-**Seeds.** Every random draw goes through an explicitly seeded
-`numpy.random.default_rng`. Instance generation, random initial angles and
-instance selection are all reproducible; `--seed` changes the whole run.
+**Seeds.** Every random draw in this package goes through an explicitly seeded
+`numpy.random.default_rng`, so any run here is reproducible and `--seed` changes
+the whole run. The seeding is a property of this package, not a reconstruction of
+the seeds used earlier: in the runs that produced the published results the two
+random initialisation strategies (`rand_1_p` and `rand_2pi_p`) drew from an
+unseeded generator, so re-running them here gives a different but statistically
+equivalent draw. The deterministic strategies `one_p` and `tqa75` reproduce the
+published numbers exactly, as does the magic study, which uses `tqa75` alone and
+reads its instances from a shipped data file.
+
+The seeding was added when this package was prepared, after the published runs
+had been made. We deliberately did not re-run those two families under the new
+seeds. They are averaged over repeated runs and enter the paper only through
+aggregate behaviour, so a fresh draw shifts individual numbers slightly and
+leaves every comparison and conclusion unchanged; re-running them would replace
+the published figures with equivalent ones for no gain. From this release
+onwards the seed is recorded, so any run made with this code is reproducible.
 
 **Magic.** M₂ is the stabilizer Rényi entropy of Leone, Oliviero and Hamma,
 
