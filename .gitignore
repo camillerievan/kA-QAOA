@@ -16,5 +16,4 @@ _export_from_db.py
 results/*
 !results/cyclic_published/
 !results/path_published/
-!results/random_published/
 !results/magic_published/

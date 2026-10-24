@@ -86,8 +86,12 @@ def main():
         for p in range(1, layers + 1):
             for variant in VARIANTS:
                 first = len(rows)
-                for optimiser, init in settings:
-                    rng = np.random.default_rng(args.seed * 100 + n)
+                for si, (optimiser, init) in enumerate(settings):
+                    # one independent stream per run, derived from --seed, so
+                    # rand_1_p and rand_2pi_p are separate draws and not
+                    # rescalings of one another
+                    rng = np.random.default_rng(np.random.SeedSequence(
+                        [args.seed, n, p, VARIANTS.index(variant), si]))
                     x0 = initial_angles(z_terms, n, variant, p, init, rng)
                     r, _ = optimise(z_terms, costs, n, p, variant, x0,
                                     optimiser, MAXITER)

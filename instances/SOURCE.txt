@@ -1,7 +1,7 @@
 random12_published.hyperw
 -------------------------
 
-The 70 twelve-variable hypergraphs behind Sections 4.2 and 4.3 of the
+The 70 twelve-variable hypergraphs behind Section 4.3 of the
 manuscript.  Taken from graphs_hyper/12nd.hyperw in the main project,
 lines 1 to 48 and 51 to 72, which are the ones the published run
 actually covered; lines 49 and 50 fell on the boundary between two

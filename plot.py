@@ -20,7 +20,7 @@ Which axis a figure uses follows the shape of the data, as in the paper:
 Run with no arguments for a menu, or name a metric directly:
 
     python plot.py                            # interactive
-    python plot.py ar --run random_published  # one figure
+    python plot.py ar --run magic_published   # one figure
     python plot.py all --run cyclic_published --p 1 --save
     python plot.py stacked --run path_published   # three-panel layout
 
@@ -177,7 +177,7 @@ def build_magic(source, normalised: bool):
 def run_rows(source):
     """The per-run rows of a source, whichever file they live in."""
     return (ds.load(source, "runs") or ds.load(source, "cyclic")
-            or ds.load(source, "random_pm1") or ds.load(source, "qaoacd"))
+            or ds.load(source, "random_pm1"))
 
 
 def sizes(source):

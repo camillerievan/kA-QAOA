@@ -8,11 +8,11 @@ random12_magic.csv  3150 rows, one per layer
 instances           70
 
 Section 4.3 of the manuscript: the build-up of stabilizer Renyi
-entropy M_2 through the layers of the circuit, for SA-, kA-, AA-
-and MA-QAOA, alongside the approximation ratio, fidelity and
+entropy M_2 through the layers of the circuit, for SA-, kA- and
+MA-QAOA, alongside the approximation ratio, fidelity and
 objective evaluations of the same runs.  Everything here is
 plotted against the depth p, since all instances are at n = 12.
 
-random12.csv is the same file as results/random_published/
-random12.csv, byte for byte.  It is repeated here so that this
-run plots every figure on its own.
+random12.csv holds the per-run results and random12_magic.csv
+the per-layer M_2 values, so this run plots every figure on its
+own.

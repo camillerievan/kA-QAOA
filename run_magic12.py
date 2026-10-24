@@ -96,7 +96,9 @@ def main():
               f"worst {c_wst:.0f}")
         for p in range(1, layers + 1):
             for variant in VARIANTS:
-                rng = np.random.default_rng(args.seed * 100 + i)
+                # one independent stream per run, derived from --seed
+                rng = np.random.default_rng(np.random.SeedSequence(
+                    [args.seed, i, p, VARIANTS.index(variant)]))
                 x0 = initial_angles(z_terms, N_QUBITS, variant, p, INITIAL, rng)
                 want_magic = (not args.no_magic) and p == layers
                 r, magic = optimise(z_terms, costs, N_QUBITS, p, variant, x0,

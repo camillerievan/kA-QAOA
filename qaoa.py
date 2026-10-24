@@ -89,8 +89,11 @@ def random_terms(n: int, rng: np.random.Generator, lo: int = -10, hi: int = 10,
                  k: int = 3):
     """3-uniform hypergraph on a cycle with random integer coefficients.
 
-    Coefficients are drawn uniformly from [lo, hi], excluding zero, which is the
-    family used in Section 4.3.
+    Coefficients are drawn uniformly from [lo, hi], excluding zero. Note that
+    the hyperedges follow the cycle, so this is NOT the Section 4.3 family:
+    those 70 instances have randomly placed triples and are read from
+    instances/random12_published.hyperw by load_hyperw(). This helper is not
+    used by any runner.
     """
     terms = []
     for i in range(n):

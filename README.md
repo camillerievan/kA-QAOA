@@ -1,7 +1,8 @@
-# ex09S — simplified reproduction package
+# Structured Parameterization and Non-Stabilizerness in Hypergraph QAOA
 
 A self-contained, runnable reproduction of the experiments reported in
-*kA-QAOA: angle grouping by interaction order*. Everything runs from a clean
+*Structured Parameterization and Non-Stabilizerness in Hypergraph QAOA*.
+Everything runs from a clean
 checkout with no edits and no database.
 
 ## Requirements
@@ -77,6 +78,12 @@ just aggregates.
 | `random12_magic.csv` | one row per (instance, p, variant, layer): M₂ |
 | `random_pm1.csv` | one row per (instance, p, variant, optimiser, initialisation) |
 
+These are the files a run writes. Of them, only `cyclic.csv`,
+`random12.csv` and `random12_magic.csv` have published counterparts under
+`results/`; `random_pm1.csv` is produced by `run_random_pm1.py` but no
+published copy is shipped, because the Section 4.2 instances were drawn
+without a recorded seed and cannot be recovered.
+
 Every row carries `c_opt`, `c_wst`, `degeneracy`, `angles`, `terms`, `AR`,
 `prob_opt_pct`, `nfev`, `seed`, and
 the circuit cost (`gates`, `cx`, `depth`, `cx_depth`), so each figure and the
@@ -88,9 +95,9 @@ them: `python plot.py` and pick a run.
 | paper figure | script | filter on the CSV |
 |---|---|---|
 | Fig. A1–A3 (cyclic: AR, AP, nfev) | `run_cyclic.py` | `family = cyclic`, group by `n`, `p`, `variant` |
-| Table 4.8 equivalent (by initialisation) | `run_cyclic.py` | group by `initial_angles` |
-| Table 4.9 equivalent (by optimiser) | `run_cyclic.py` | group by `optimiser` |
-| Fig. B4 (random coefficients, J ∈ {-1,0,+1}) | `run_random_pm1.py` | `random_pm1.csv`, group by `p`, `variant` |
+| Table C2 (nfev by initialisation) | `run_cyclic.py` | group by `initial_angles` |
+| Table C1 (nfev by optimiser) | `run_cyclic.py` | group by `optimiser` |
+| Appendix B (random coefficients, J ∈ {-1,0,+1}) | `run_random_pm1.py` | `random_pm1.csv`, group by `p`, `variant` |
 | Fig. 3a (magic barrier) | `run_magic12.py` | `random12_magic.csv`, `p = 5`, mean M₂ by `layer`, `variant` |
 | Fig. 3b (AR vs depth) | `run_magic12.py` | `random12.csv`, mean `AR` by `p`, `variant` |
 | Fig. 3c (nfev vs depth) | `run_magic12.py` | `random12.csv`, mean `nfev` by `p`, `variant` |
@@ -130,22 +137,38 @@ differentiated gradients; Powell with `xtol = ftol = 1e-4`. Both capped at
 `maxiter = 500`, which is our choice rather than a SciPy default.
 
 **Seeds.** Every random draw in this package goes through an explicitly seeded
-`numpy.random.default_rng`, so any run here is reproducible and `--seed` changes
-the whole run. The seeding is a property of this package, not a reconstruction of
-the seeds used earlier: in the runs that produced the published results the two
-random initialisation strategies (`rand_1_p` and `rand_2pi_p`) drew from an
-unseeded generator, so re-running them here gives a different but statistically
-equivalent draw. The deterministic strategies `one_p` and `tqa75` reproduce the
-published numbers exactly, as does the magic study, which uses `tqa75` alone and
-reads its instances from a shipped data file.
+`numpy.random.default_rng`, so any run made here is reproducible and `--seed`
+changes the whole run. The seeding is a property of this package rather than a
+reconstruction of the earlier runs: the two random initialisation strategies
+(`rand_1_p` and `rand_2pi_p`) drew from an unseeded generator when the published
+results were produced, so re-running them here gives a different, statistically
+equivalent draw.
 
-The seeding was added when this package was prepared, after the published runs
-had been made. We deliberately did not re-run those two families under the new
-seeds. They are averaged over repeated runs and enter the paper only through
-aggregate behaviour, so a fresh draw shifts individual numbers slightly and
-leaves every comparison and conclusion unchanged; re-running them would replace
-the published figures with equivalent ones for no gain. From this release
-onwards the seed is recorded, so any run made with this code is reproducible.
+Seeding was added when this package was prepared, after the published runs had
+been made, and the published runs were deliberately left as they are. From this
+release onwards the seed is recorded with every run.
+
+**What reproduces, and what does not.** The CSV files under `results/` are
+exports of the original runs; they are data, not output of this code. The
+Section 4.3 tables and figures, and the evaluation counts at matched quality,
+are computed from them and can be recomputed exactly.
+
+Re-running the code is a different matter. It solves the same instances and
+preserves the ordering between the variants, but not the individual values:
+evaluation counts differ, and in some cases so do approximation ratios. This
+is an independent implementation, and arbitrary choices made differently --
+notably the angle parametrisation convention -- send the optimiser along a
+different path. That applies to the deterministic initialisation strategies as
+much as to the random ones.
+
+**Not in this release.** Section 4.1 of the paper -- its text, Figures A1-A3,
+Tables C1 and C2, and the speed-up ratios quoted in the Conclusion -- reports
+an earlier set of the original runs, including those using the Powell
+optimiser. Those runs are not among the files shipped here, so those results
+cannot be recomputed from `results/`. The results of Section 4.2 are likewise
+not shipped: its instances were drawn without a recorded seed and cannot be
+recovered. What can be recomputed exactly from `results/` is Section 4.3
+(Tables 2 and 3, Figure 3) and Table C3.
 
 **Magic.** M₂ is the stabilizer Rényi entropy of Leone, Oliviero and Hamma,
 

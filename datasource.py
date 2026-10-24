@@ -11,9 +11,6 @@ and are split one per family of figures:
         path_published/         3-uniform path, n = 4 to 14
             cyclic.csv
             SOURCE.txt
-        random_published/       continuous depth on/off, n = 4 to 13
-            qaoacd.csv
-            SOURCE.txt
         magic_published/        those same 70 instances, with M_2
             random12.csv
             random12_magic.csv
@@ -83,13 +80,11 @@ def run_dir(name: str, create: bool = False) -> str:
 
 # the runs that back the figures in the manuscript, in the order the paper
 # presents them; anything else is listed after, newest first
-MANUSCRIPT = ("cyclic_published", "path_published",
-              "random_published", "magic_published")
+MANUSCRIPT = ("cyclic_published", "path_published", "magic_published")
 
 DESCRIPTION = {
     "cyclic_published": "3-uniform cyclic hypergraphs, n = 4 to 15",
     "path_published":   "3-uniform path hypergraphs, n = 4 to 14",
-    "random_published": "continuous depth on/off, n = 4 to 13",
     "magic_published":  "those same instances with their magic, per layer",
 }
 
@@ -129,8 +124,7 @@ def available_sources() -> list[str]:
 FILES = {"runs": "random12.csv",
          "magic": "random12_magic.csv",
          "cyclic": "cyclic.csv",
-         "random_pm1": "random_pm1.csv",
-         "qaoacd": "qaoacd.csv"}
+         "random_pm1": "random_pm1.csv"}
 
 
 def load(source: str, what: str) -> list[dict]:
@@ -169,7 +163,7 @@ if __name__ == "__main__":
     print("results folder:", RESULTS)
     for src in available_sources():
         bits = []
-        for what in ("runs", "magic", "cyclic", "random_pm1", "qaoacd"):
+        for what in ("runs", "magic", "cyclic", "random_pm1"):
             rows = load(src, what)
             if rows:
                 bits.append(f"{FILES[what]} {len(rows)} rows")

@@ -3,7 +3,8 @@ closing the chain of interactions, so every vertex
 sits in three hyperedges.
 
 cyclic.csv  1063 rows, one per (graph, depth, variant)
-graphs      12, n in {4, 5, 6, 7, 8, 9, 11, 12, 13, 15}
+graphs      12 over 10 sizes, n in {4, 5, 6, 7, 8, 9, 11, 12, 13, 15};
+            three distinct graphs at n = 4, one at every other size
 depths      1 to 6
 variants    am, ka, ma, sa
 
