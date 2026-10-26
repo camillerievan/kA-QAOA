@@ -2,17 +2,31 @@
 leaving the chain open, so the two vertices at each end
 sit in fewer hyperedges than the rest.
 
-cyclic.csv  1116 rows, one per (graph, depth, variant)
-graphs      12 over 10 sizes, n in {4, 5, 6, 7, 8, 9, 11, 12, 13, 14};
+cyclic.csv  1308 rows, one per (graph, depth, variant, initialisation)
+graphs      14 over 12 sizes, n in {4, ..., 15};
             three distinct graphs at n = 4, one at every other size
-depths      1 to 6
+depths      1 to 5 at every size; 6 at every size except 10, and
+            only in part at 14 and 15
 variants    am, ka, ma, sa
+optimiser   BFGS, one run per variant, initialisation and depth;
+            the initialisation is not recorded per row
 
-The family of each graph is taken from tb_Graph.graph_name,
-and for the unnamed duplicates at n = 4 from the term count.
+Sources, all from the same ex09 code and settings:
+  n = 4..9, 11..13   May 2024 runs, as exported from the results
+                     database
+  n = 14, 15         May 2024 runs where they exist (instances 23, 24;
+                     the n = 15 graph was filed as cyclic in that
+                     export and is moved here), completed to
+                     p = 1..5 from the July 2024 (n = 14) and
+                     August 2024 (n = 15) runs
+  n = 10             July 2024 runs (instance 28), p = 1..5
+Where July/August runs are used, the first recorded run of each
+configuration is kept.
+
+The family of each graph is taken from its cost-term count.
 
 AR is <C>/C_opt, with c_opt recomputed from the problem
-definition; the database stores the attained expectation but
+definition; the stored rows carry the attained expectation but
 no optimum.
 prob_opt_pct is the probability of measuring an optimal
 assignment, as recorded.
