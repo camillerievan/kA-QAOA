@@ -1,7 +1,9 @@
 # Structured Parameterization and Non-Stabilizerness in Hypergraph QAOA
 
-A self-contained, runnable reproduction of the experiments reported in
-*Structured Parameterization and Non-Stabilizerness in Hypergraph QAOA*.
+A self-contained, runnable implementation of the procedure reported in
+*Structured Parameterization and Non-Stabilizerness in Hypergraph QAOA*. It
+recomputes some of the published results exactly and the rest in distribution;
+see **What reproduces, and what does not** below.
 Everything runs from a clean
 checkout with no edits and no database.
 
@@ -16,8 +18,10 @@ Four packages, all pinned: NumPy and SciPy for the optimisers, the spectrum and
 the magic measurement; **Qulacs** for the quantum circuits, which every
 experiment runs through; and matplotlib for `plot.py` only.
 
-These are the versions this package was verified with. The versions behind the
-published results are listed in the manuscript.
+These are the versions this package was verified with, and the only ones on
+record (Appendix F of the manuscript lists the same ones). The published runs
+were made on a university cluster under Python 3.10, and their package versions
+were not logged.
 
 ## Running
 

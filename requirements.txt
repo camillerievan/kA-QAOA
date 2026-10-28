@@ -14,8 +14,9 @@
 #   qulacs        the quantum circuits; every experiment runs through these
 #   matplotlib    plot.py only; the experiments do not need it
 #
-# These are the versions this package was verified with. The versions behind
-# the published results are listed in the manuscript.
+# These are the versions this package was verified with, and the only ones on
+# record: the published runs were made on a university cluster under Python 3.10
+# and their package versions were not logged (see the manuscript, Appendix F).
 numpy==2.5.3
 scipy==1.18.1
 qulacs==0.6.14
