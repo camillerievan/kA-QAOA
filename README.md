@@ -1,9 +1,10 @@
 # Structured Parameterization and Non-Stabilizerness in Hypergraph QAOA
 
 A self-contained, runnable implementation of the procedure reported in
-*Structured Parameterization and Non-Stabilizerness in Hypergraph QAOA*. It
-recomputes some of the published results exactly and the rest in distribution;
-see **What reproduces, and what does not** below.
+*Structured Parameterization and Non-Stabilizerness in Hypergraph QAOA*. The
+released result files let Section 4.3 and Table C3 be recomputed exactly;
+re-running the code reproduces the method but not the published values. See
+**What reproduces, and what does not** below.
 Everything runs from a clean
 checkout with no edits and no database.
 
