@@ -86,8 +86,8 @@ just aggregates.
 These are the files a run writes. Of them, only `cyclic.csv`,
 `random12.csv` and `random12_magic.csv` have published counterparts under
 `results/`; `random_pm1.csv` is produced by `run_random_pm1.py` but no
-published copy is shipped, because the Section 4.2 instances were drawn
-without a recorded seed and cannot be recovered.
+published copy is shipped, because the Section 4.2 instances are not built
+by this code.
 
 Every row carries `c_opt`, `c_wst`, `degeneracy`, `angles`, `terms`, `AR`,
 `prob_opt_pct`, `nfev`, `seed`, and
@@ -158,8 +158,9 @@ exports of the original runs; they are data, not output of this code. The
 Section 4.3 tables and figures, and the evaluation counts at matched quality,
 are computed from them and can be recomputed exactly.
 
-Re-running the code is a different matter. It solves the same instances and
-preserves the ordering between the variants, but not the individual values:
+Re-running the code is a different matter. It solves the same instances for
+Sections 4.1 and 4.3 and, in the configurations we re-ran, preserved the
+ordering between the variants, but not the individual values:
 evaluation counts differ, and in some cases so do approximation ratios. This
 is an independent implementation, and arbitrary choices made differently --
 notably the angle parametrisation convention -- send the optimiser along a
@@ -171,8 +172,8 @@ Tables C1 and C2, and the speed-up ratios quoted in the Conclusion -- reports
 an earlier set of the original runs, including those using the Powell
 optimiser. Those runs are not among the files shipped here, so those results
 cannot be recomputed from `results/`. The results of Section 4.2 are likewise
-not shipped: its instances were drawn without a recorded seed and cannot be
-recovered. What can be recomputed exactly from `results/` is Section 4.3
+not shipped, and its instances are not built by this code. What can be
+recomputed exactly from `results/` is Section 4.3
 (Tables 2 and 3, Figure 3) and Table C3.
 
 **Magic.** M₂ is the stabilizer Rényi entropy of Leone, Oliviero and Hamma,
